@@ -50,6 +50,7 @@ belongs_to :users
 has_one : order_date
 
 ## order_datesテーブル
+
 | Column              | Type          | Options                  |
 | ------------------- | ------        | ------------------------ |
 | post cord           | integer       | null: false              |
