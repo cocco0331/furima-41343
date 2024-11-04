@@ -11,55 +11,53 @@
 | first_name          | string | null: false              |
 | last_name_kana      | string | null: false              |
 | first_name_kana     | string | null: false              |
-| birthday            | integer| null: false              |
+| birthday            | date   | null: false              |
 ### Association
 has_many :items
 has_many :orders
 
 ## itemsテーブル
 
-| Column              | Type          | Options                  |
-| ------------------- | ------        | ------------------------ |
-| image               | ActiveStorage | null: false              |
-| item_name           | string        | null: false              |
-| description         | integer       | null: false              |
-| category            | integer       | null: false              |
-| product_condition   | integer       | null: false              |
-| shipping_cost       | integer       | null: false              |
-| delivery_region     | integer       | null: false              |
-| birthday            | integer       | null: false              |
-| price               | integer       | null: false              |
-| users_id            | reference     | null: false foreign: true|
+| Column              | Type          | Options                      |
+| ------------------- | ------        | ------------------------     |
+| item_name           | string        | null: false                  |
+| description         | text          | null: false                  |
+| category_id         | integer       | null: false                  |
+| product_condition_id| integer       | null: false                  |
+| shipping_cost_id    | integer       | null: false                  |
+| delivery_region_id  | integer       | null: false                  |
+| price               | integer       | null: false                  |
+| users               | references    | null: false foreign_key: true|
 
 ### Association
 
-belongs_to :users
-has_one :orders
+belongs_to :user
+has_one :order
 
 ## ordersテーブル
 
-| Column              | Type          | Options                  |
-| ------------------- | ------        | ------------------------ |
-| items_id            | reference     | null: false foreign: true|
-| users_id            | reference     | null: false foreign: true|
+| Column              | Type       | Options                      |
+| ------------------- | ------     | ------------------------     |
+| items               | references | null: false foreign_key: true|
+| users               | references | null: false foreign_key: true|
 
 ### Association
 
-belongs_to :items
-belongs_to :users
+belongs_to :item
+belongs_to :user
 has_one : order_date
 
 ## order_datesテーブル
-| Column              | Type          | Options                  |
-| ------------------- | ------        | ------------------------ |
-| post cord           | integer       | null: false              |
-| prefectures         | string        | null: false              |
-| address             | string        | null: false              |
-| street_address      | string        | null: false              |
-| building            | string        | null: false              |
-| phone_number        | integer       | null: false              |
-| phone_number        | integer       | null: false              |
+| Column              | Type          | Options                       |
+| ------------------- | ------        | ------------------------      |
+| post_cord           | integer       | null: false                   |
+| prefectures_id      | string        | null: false                   |
+| address             | string        | null: false                   |
+| street_address      | string        | null: false                   |
+| building            | string        |                               |
+| phone_number        | string        | null: false                   |
+| order               | references    | null: false foreign_key: true |
 
 ### Association
 
-belongs_to :orders
+belongs_to :order
