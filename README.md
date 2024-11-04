@@ -25,9 +25,10 @@ has_many :orders
 | category_id         | integer       | null: false                  |
 | product_condition_id| integer       | null: false                  |
 | shipping_cost_id    | integer       | null: false                  |
+| shipping_date_id    | integer       | null: false                  |
 | delivery_region_id  | integer       | null: false                  |
 | price               | integer       | null: false                  |
-| users               | references    | null: false foreign_key: true|
+| user                | references    | null: false foreign_key: true|
 
 ### Association
 
@@ -38,8 +39,8 @@ has_one :order
 
 | Column              | Type       | Options                      |
 | ------------------- | ------     | ------------------------     |
-| items               | references | null: false foreign_key: true|
-| users               | references | null: false foreign_key: true|
+| item                | references | null: false foreign_key: true|
+| user                | references | null: false foreign_key: true|
 
 ### Association
 
@@ -50,8 +51,8 @@ has_one : order_date
 ## order_datesテーブル
 | Column              | Type          | Options                       |
 | ------------------- | ------        | ------------------------      |
-| post_cord           | integer       | null: false                   |
-| prefectures_id      | string        | null: false                   |
+| post_cord           | string        | null: false                   |
+| delivery_region_id  | integer       | null: false                   |
 | address             | string        | null: false                   |
 | street_address      | string        | null: false                   |
 | building            | string        |                               |
