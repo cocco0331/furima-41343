@@ -5,7 +5,7 @@ const price = () => {
    const addTaxDom = document.getElementById('add-tax-price');
     addTaxDom.innerHTML = Math.floor(priceInput.value * 0.1 );
    const addProfitDom = document.getElementById('profit');
-    addProfitDom.innerHTML =  Math.floor(priceInput.value - Math.round(priceInput.value * 0.1 ))
+    addProfitDom.innerHTML =  Math.floor(priceInput.value - Math.floor(priceInput.value * 0.1 ))
   })
 };
 window.addEventListener("turbo:load", price);

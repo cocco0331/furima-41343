@@ -10,7 +10,6 @@ class Item < ApplicationRecord
 
   validates :item_name, presence: true
   validates :description, presence: true
-  validates :user_id, presence: true
   validates :category_id, :product_condition_id, :shipping_cost_id, :shipping_date_id, :delivery_region_id,
             numericality: { other_than: 1, message: "can't be blank" }
   validates :image, presence: true
