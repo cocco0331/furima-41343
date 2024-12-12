@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_16_060118) do
+ActiveRecord::Schema[7.0].define(version: 2024_12_07_050841) do
   create_table "active_storage_attachments", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -54,6 +54,28 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_16_060118) do
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
+  create_table "order_dates", charset: "utf8mb3", force: :cascade do |t|
+    t.string "post_code"
+    t.integer "shipping_date_id"
+    t.string "address"
+    t.string "street_address"
+    t.string "building"
+    t.string "phone_number"
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_dates_on_order_id"
+  end
+
+  create_table "orders", charset: "utf8mb3", force: :cascade do |t|
+    t.bigint "item_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_orders_on_item_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb3", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "email", default: "", null: false
@@ -75,4 +97,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_16_060118) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "items", "users"
+  add_foreign_key "order_dates", "orders"
+  add_foreign_key "orders", "items"
+  add_foreign_key "orders", "users"
 end
