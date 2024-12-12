@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :set_index, only: [:index]
+  before_action :authenticate_user!
+  before_action :set_index, only: [:index, :create]
   def index
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
     @item = Item.find(params[:item_id])
@@ -37,9 +38,7 @@ class OrdersController < ApplicationController
   end
 
   def set_index
-    if current_user.id == @item && @item.present?
-    else
-      redirect_to root_path
-    end
+    @item = Item.find(params[:item_id])
+    redirect_to root_path if current_user.id == @item.user_id && @item.present?
   end
 end
