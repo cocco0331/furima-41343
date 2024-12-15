@@ -28,7 +28,7 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include('Post code is invalid. Include hyphen(-)')
       end
       it 'shipping_date_idが空だと購入できない' do
-        @order_address.shipping_date_id = '---'
+        @order_address.shipping_date_id = '0'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Shipping date can't be blank")
       end
