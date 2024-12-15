@@ -52,7 +52,7 @@ class ItemsController < ApplicationController
   end
 
   def set_index
-    if current_user.id == @item.user_id && @item.present?
+    if current_user.id == @item.user_id && @item.order.nil?
     else
       redirect_to root_path
     end
