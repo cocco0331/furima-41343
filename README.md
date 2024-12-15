@@ -52,7 +52,7 @@ has_one : order_date
 | Column              | Type          | Options                        | 
 | ------------------- | ------        | ------------------------       |
 | post_cord           | string        | null: false                    |
-| delivery_region_id  | integer       | null: false                    |
+| shipping_date_id    | integer       | null: false                    |
 | address             | string        | null: false                    |
 | street_address      | string        | null: false                    |
 | building            | string        |                                |
